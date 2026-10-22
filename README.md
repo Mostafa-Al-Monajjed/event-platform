@@ -1,40 +1,73 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EventHub: Event Management Platform
 
-## Getting Started
+Frontend for the Digit technical assessment, built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, Zustand and TanStack Query.
 
-First, run the development server:
+**Live demo:** [<ضع رابط Vercel هنا>](https://event-platform-pi-umber.vercel.app)
+
+## Features
+
+- Login/Register, protected routes, persisted session
+- Upcoming events with search, type and date filters, pagination
+- Event details, registration form (LinkedIn, education, motivation), registration history
+- Admin: all events, registrations list, approve, create, delete with confirmation
+- Past/full events are labelled and registration is disabled
+- Client-side validation (Zod + React Hook Form), loading/error/empty states, responsive layout
+
+## Setup
+
+Requirements: Node.js 20+ and npm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Mostafa-Al-Monajjed/movie-explorer
+cd event-platform
+npm install
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+NEXT_PUBLIC_API_URL=https://events-management-api-847aeb3c849e.hosted.ghaymah.systems
+```
 
-## Learn More
+## Run locally
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev   # http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Test admin: `admin@example.com` / `admin123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Build & Deploy
 
-## Deploy on Vercel
+```bash
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployed on Vercel. Set `NEXT_PUBLIC_API_URL` in the project environment variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# event-platform
->>>>>>> 48c3f06523c5ffe36505080ed49bcc66e1abb7a5
+## Project structure
+
+```
+src/app          routes (App Router)
+src/components   UI components (ui, shared, events, admin, layout)
+src/services     API calls
+src/hooks        TanStack Query hooks
+src/stores       Zustand stores
+src/lib          utils, validators, API client
+```
+
+## Assumptions, Limitations and Trade-offs
+
+- **Role detection:** the login response only returns a token, so the role is read from the decoded JWT. The role cookie is used for UX redirects only; real authorization is enforced by the API (403).
+- **Token storage:** the token is stored in localStorage (Zustand persist) and in a JS-readable cookie so middleware can protect routes. Trade-off: not HttpOnly. A production app would use HttpOnly cookies set by a backend/BFF.
+- **State management:** Zustand for client state (auth), TanStack Query for server state (caching, pagination, invalidation).
+- **No reject action:** the API only exposes approve, so the UI does not offer reject.
+- **My registrations** uses `GET /events/attended`, the only endpoint available for this.
+- **Past events** return 404 for non-admin users on the details endpoint, so past events are not linked from the user history.
+- **Capacity state** relies on `registrationCount`; if the list endpoint omits it, the Full badge appears only on the details page.
+- **Native selects** are used for forms for reliability on mobile and simplicity.
+- **Future improvements:** unit/E2E tests (Vitest, Playwright), optimistic updates, edit event (PATCH), i18n (EN/AR with RTL), bundle analysis, better a11y audit.
