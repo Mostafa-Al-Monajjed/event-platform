@@ -19,11 +19,18 @@ export function DeleteEventButton({ event }: { event: EventItem }) {
   const mutation = useDeleteEvent();
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="sm" disabled={mutation.isPending}>
-          Delete
-        </Button>
+      <AlertDialogTrigger
+        render={
+          <Button
+            variant="destructive"
+            size="sm"
+            disabled={mutation.isPending}
+          />
+        }
+      >
+        Delete
       </AlertDialogTrigger>
+
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Delete this event?</AlertDialogTitle>

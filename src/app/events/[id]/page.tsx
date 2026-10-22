@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
@@ -30,8 +30,14 @@ export default function EventDetailsPage() {
           message={getErrorMessage(error)}
           onRetry={() => refetch()}
         />
-        <Button asChild variant="outline">
-          <Link href="/events">Back to events</Link>
+
+        <Button
+          variant="outline"
+          onClick={() => {
+            window.location.href = "/events";
+          }}
+        >
+          Back to events
         </Button>
       </div>
     );

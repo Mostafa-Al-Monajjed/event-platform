@@ -39,9 +39,10 @@ export default function EventRegistrationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Registrations (event #{eventId})</h1>
-        <Button asChild variant="outline">
-          <Link href="/admin">Back</Link>
-        </Button>
+
+        <Link href="/admin">
+          <Button variant="outline">Back</Button>
+        </Link>
       </div>
 
       {isLoading ? (

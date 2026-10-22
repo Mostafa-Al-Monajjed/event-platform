@@ -6,15 +6,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FieldError } from "@/components/shared/field-error";
-import { authService } from "@/services/auth";
-import { useAuthStore } from "@/stores/auth-store";
-import { loginSchema, type LoginForm } from "@/lib/validators";
-import { getErrorMessage } from "@/lib/errors";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { FieldError } from "../../components/shared/field-error";
+import { authService } from "../../services/auth";
+import { useAuthStore } from "../../stores/auth-store";
+import { loginSchema, type LoginForm } from "../../lib/validators";
+import { getErrorMessage } from "../../lib/errors";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -37,23 +42,41 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto max-w-md">
-      <Card>
+      <Card className="border-0 shadow-xl ring-1 ring-border">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle className="text-2xl font-extrabold">Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit((v) => mutation.mutate(v))} className="space-y-4" noValidate>
+          <form
+            onSubmit={handleSubmit((v) => mutation.mutate(v))}
+            className="space-y-4"
+            noValidate
+          >
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" autoComplete="email" {...register("email")} />
+              <Input
+                id="email"
+                type="email"
+                autoComplete="email"
+                {...register("email")}
+              />
               <FieldError message={errors.email?.message} />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" autoComplete="current-password" {...register("password")} />
+              <Input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+                {...register("password")}
+              />
               <FieldError message={errors.password?.message} />
             </div>
-            <Button type="submit" className="w-full" disabled={mutation.isPending}>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={mutation.isPending}
+            >
               {mutation.isPending ? "Signing in..." : "Login"}
             </Button>
             <p className="text-center text-sm">

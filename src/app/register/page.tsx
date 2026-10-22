@@ -6,16 +6,21 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FieldError } from "@/components/shared/field-error";
-import { NativeSelect } from "@/components/shared/native-select";
-import { authService } from "@/services/auth";
-import { registerSchema, type RegisterForm } from "@/lib/validators";
-import { getErrorMessage } from "@/lib/errors";
-import { GENDERS } from "@/lib/constants";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { FieldError } from "../../components/shared/field-error";
+import { NativeSelect } from "../../components/shared/native-select";
+import { authService } from "../../services/auth";
+import { registerSchema, type RegisterForm } from "../../lib/validators";
+import { getErrorMessage } from "../../lib/errors";
+import { GENDERS } from "../../lib/constants";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -36,9 +41,11 @@ export default function RegisterPage() {
 
   return (
     <div className="mx-auto max-w-md">
-      <Card>
+      <Card className="border-0 shadow-xl ring-1 ring-border">
         <CardHeader>
-          <CardTitle>Create account</CardTitle>
+          <CardTitle className="text-2xl font-extrabold">
+            Create account
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form

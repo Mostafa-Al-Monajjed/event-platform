@@ -27,7 +27,9 @@ export default function EventsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Upcoming events</h1>
+      <h1 className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent dark:from-indigo-400 dark:to-violet-400">
+        Upcoming events
+      </h1>
       <EventFilters
         value={filters}
         onChange={(v) => {

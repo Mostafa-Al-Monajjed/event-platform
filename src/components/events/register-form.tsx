@@ -9,9 +9,12 @@ import { Textarea } from "../../components/ui/textarea";
 import { FieldError } from "../../components/shared/field-error";
 import { NativeSelect } from "../../components/shared/native-select";
 import { useRegisterForEvent } from "../../hooks/use-events";
-import { registerEventSchema, type RegisterEventForm } from "../../lib/validators";
+import {
+  registerEventSchema,
+  type RegisterEventForm,
+} from "../../lib/validators";
 import { EDUCATION_LEVELS } from "../../lib/constants";
-import type { EducationLevel, RegisterEventInput } from "@/types/api";
+import type { EducationLevel, RegisterEventInput } from "../../types/api";
 
 export function RegisterForm({
   eventId,

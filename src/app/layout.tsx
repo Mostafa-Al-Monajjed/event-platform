@@ -18,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={geist.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geist.className} min-h-screen bg-gradient-to-b from-indigo-50/70 via-background to-background antialiased dark:from-indigo-950/30`}
+      >
         <Providers>
           <Navbar />
-          <main className="mx-auto max-w-6xl px-4 py-6">{children}</main>
+          <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
           <Toaster richColors position="top-center" />
         </Providers>
       </body>

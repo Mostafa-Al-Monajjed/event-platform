@@ -8,7 +8,7 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="rounded-lg border border-red-200 bg-red-50 p-6 text-center text-red-700">
+    <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-center text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
       <p className="mb-3">{message}</p>
       {onRetry && (
         <Button variant="outline" size="sm" onClick={onRetry}>
@@ -21,7 +21,7 @@ export function ErrorState({
 
 export function EmptyState({ text }: { text: string }) {
   return (
-    <div className="rounded-lg border border-dashed p-10 text-center text-muted-foreground">
+    <div className="rounded-xl border border-dashed bg-card/50 p-12 text-center text-muted-foreground">
       {text}
     </div>
   );

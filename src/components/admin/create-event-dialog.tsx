@@ -45,9 +45,8 @@ export function CreateEventDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button>Create event</Button>
-      </DialogTrigger>
+      <DialogTrigger render={<Button />}>Create event</DialogTrigger>
+
       <DialogContent className="max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Create event</DialogTitle>

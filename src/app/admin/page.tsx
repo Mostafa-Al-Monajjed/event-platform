@@ -40,7 +40,10 @@ export default function AdminEventsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-bold">Admin: all events</h1>
+        <h1 className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent dark:from-indigo-400 dark:to-violet-400">
+          Admin: all events
+        </h1>
+
         <CreateEventDialog />
       </div>
       <EventFilters
@@ -89,11 +92,10 @@ export default function AdminEventsPage() {
                         </Badge>
                       </TableCell>
                       <TableCell className="space-x-2 whitespace-nowrap text-right">
-                        <Button asChild variant="outline" size="sm">
-                          <Link href={`/admin/events/${e.id}/registrations`}>
-                            Registrations
-                          </Link>
-                        </Button>
+                        <Link href="/admin">
+                          <Button variant="outline">Back</Button>
+                        </Link>
+
                         <DeleteEventButton event={e} />
                       </TableCell>
                     </TableRow>

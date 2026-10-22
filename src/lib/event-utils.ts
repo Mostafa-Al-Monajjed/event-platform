@@ -1,5 +1,5 @@
 import type { EventItem } from "../types/api";
-import type { EventFilters } from "@/services/events";
+import type { EventFilters } from "../services/events";
 import { PAGE_LIMIT } from "../lib/constants";
 
 export function eventState(event: EventItem) {

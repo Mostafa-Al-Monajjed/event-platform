@@ -14,7 +14,10 @@ export default function MyRegistrationsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">My registrations</h1>
+      <h1 className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent dark:from-indigo-400 dark:to-violet-400">
+        My registrations
+      </h1>
+
       {isLoading ? (
         <div className="space-y-3">
           {Array.from({ length: 3 }).map((_, i) => (
